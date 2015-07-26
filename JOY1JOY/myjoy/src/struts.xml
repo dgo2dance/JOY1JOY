@@ -1,0 +1,29 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts><!-- Configuration for the default package. -->
+	<!-- 系统struts2全局默认配置 begin -->
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.multipart.maxSize" value="512000000" />
+	<constant name="struts.url.http.port" value="8080" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<include file="struts-validation.xml" />
+	<constant name="struts.convention.default.parent.package"
+		value="struts-interceptor" />
+	<package name="struts-interceptor" extends="json-default,struts-default">
+
+		<interceptors>
+			<interceptor name="logon" class="com.joy1joy.utils.LogonInterceptor" />
+			<interceptor-stack name="checksession">
+				<interceptor-ref name="logon" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="checksession" />
+	</package>
+
+</struts> 

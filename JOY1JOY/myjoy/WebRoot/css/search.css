@@ -1,0 +1,198 @@
+/*
+Date:20150509
+Author:duansy
+Des:底部通用CSS
+Version:
+*/
+
+
+.m-course {
+    border: 1px solid #e7e5e4;
+    width: 300px
+}
+
+.m-course .m-course-top {
+    width: 300px;
+    height: 200px
+}
+
+.m-course .m-course-top a {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 16px
+}
+
+.m-course .m-course-top a img {
+    width: 100%
+}
+
+.m-course .m-course-top a span {
+    position: absolute;
+    display: block;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    text-align: center
+}
+
+.m-course .m-course-top a:hover .m-course-user-bg {
+    background-color: #343131;
+    opacity: .4;
+    filter: alpha(opacity=40)
+}
+
+.m-course .m-course-top a:hover .m-course-user,.m-course .m-course-top a:hover .m-course-user-bg {
+    visibility: visible
+}
+
+.m-course .m-course-top a:hover .m-course-title-bg {
+    background-color: inherit
+}
+
+.m-course .m-course-top .m-course-title-bg {
+    z-index: 3;
+    bottom: 0;
+    height: 40px;
+    background-color: #343131;
+    opacity: .4;
+    filter: alpha(opacity=40)
+}
+
+.m-course .m-course-top .m-course-title {
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.m-course .m-course-top .m-course-user-bg {
+    visibility: hidden;
+    z-index: 3;
+    top: 0;
+    height: 100%
+}
+
+.m-course .m-course-top .m-course-user {
+    visibility: hidden;
+    top: 26px;
+    text-align: center
+}
+
+.m-course .m-course-top .m-course-user img {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%
+}
+
+.m-course .m-course-top .m-course-user em {
+    font-style: normal;
+    display: block;
+    margin: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.m-course .m-course-bottom {
+    overflow: hidden;
+    height: 66px
+}
+
+.m-course .m-course-bottom>div {
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding-top: 14px
+}
+
+.m-course .m-course-bottom>div>i {
+    overflow: hidden;
+    display: inline-block;
+    width: 14px;
+    height: 16px;
+    background: url(../images/icon-static-sign.png) no-repeat
+}
+
+.m-course .m-course-bottom>div>span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.m-course .m-course-bottom .m-course-time i {
+    background-position: 0 -78px
+}
+
+.m-course .m-course-bottom .m-course-address i {
+    background-position: 0 -26px
+}
+
+.main {
+    padding: 30px 0 88px
+}
+
+.main .wrap-search {
+    margin: 0 auto;
+    width: 266px
+}
+
+.main .content {
+    margin-top: 36px;
+    text-align: center
+}
+
+.main .content .type ul {
+    display: inline-block;
+    overflow: hidden
+}
+
+.main .content .type li {
+    float: left;
+    margin-left: -1px;
+    padding: 0 20px;
+    height: 18px;
+    line-height: 18px;
+    border-left: 1px solid #eee
+}
+
+.main .content .type a {
+    color: #aca8a7;
+    cursor: default
+}
+
+.search-result {
+    margin-top: 10px;
+    border-top: 1px solid #eee
+}
+
+.search-result .status {
+    height: 20px;
+    margin-top: 60px;
+    text-align: center;
+    background: url(../images/loading.gif) center center no-repeat;
+    color: #aca8a7
+}
+
+.search-result .ended {
+    background-image: none
+}
+
+.search-result .course-list ul {
+    overflow: hidden;
+    margin-left: -27px
+}
+
+.search-result .course-list li {
+    overflow: hidden;
+    float: left;
+    margin-top: 20px;
+    margin-left: 27px;
+    width: 302px
+}

@@ -1,0 +1,343 @@
+
+.main {
+    overflow: hidden;
+    margin-top: 28px;
+    margin-bottom: 40px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.main .side {
+    float: left;
+    width: 230px
+}
+
+.main .user-info {
+    overflow: hidden;
+  //  background-color: #ddd;
+  border: 1px solid #ddd;
+}
+
+.main .user-info .avatar {
+    position: relative;
+    margin: 20px auto 0;
+    width: 120px;
+    height: 120px
+}
+
+.main .user-info .avatar img {
+    width: 120px;
+    height: 120px
+}
+
+.main .user-info .avatar span {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/mask-avatar-1.png) no-repeat
+}
+
+.main .user-info .name {
+    margin-top: 28px;
+    text-align: center
+}
+
+.main .user-info .name h3 {
+    margin: 0;
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.main .user-info .name p {
+    margin: 4px 0 0
+}
+
+.main .user-info .name i {
+    display: inline-block;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon-teacher.png) no-repeat;
+    vertical-align: middle
+}
+
+.main .user-info .name span {
+    vertical-align: middle
+}
+
+.main .user-info .social {
+    overflow: hidden;
+    margin: 28px 10px 0;
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    color: #aca8a7;
+    text-align: center
+}
+
+.main .user-info .social span {
+    width: 50%;
+    float: left
+}
+
+.main .user-info .social strong {
+    font-weight: 300;
+    font-size: 24px;
+    color: #5dc6f5
+}
+
+.main .user-info .grade {
+    padding: 20px 0;
+    text-align: center
+}
+
+.main .user-info .grade span {
+    display: inline-block;
+    margin-right: 6px;
+    color: #aca8a7;
+    vertical-align: middle
+}
+
+.main .user-info .grade ul {
+    display: inline-block;
+    margin-top: 6px;
+    overflow: hidden;
+    vertical-align: middle
+}
+
+.main .user-info .grade ul .active {
+    background-position: 0 -26px
+}
+
+.main .user-info .grade li {
+    float: left;
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon-teacher.png) 0 -52px no-repeat
+}
+
+.main .side-menu {
+    overflow: hidden;
+    margin-top: 26px;
+    padding: 0 10px;
+    background-color: #fff
+}
+
+.main .side-menu li {
+    padding: 10px 0;
+    margin-top: -1px;
+    border-top: 1px solid #eee;
+    height: 30px
+}
+
+.main .side-menu a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #aca8a7;
+    background: url(../images/icon-side-menu.png) 189px -174px no-repeat
+}
+
+.main .side-menu i {
+    display: inline-block;
+    margin: 0 8px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    background: url(../images/icon-side-menu.png) -26px 0 no-repeat
+}
+
+.main .side-menu .order i {
+    background-position-y: -100px
+}
+
+.main .side-menu .join i {
+    background-position-y: -26px
+}
+
+.main .side-menu .collect i {
+    background-position-y: -51px
+}
+
+.main .side-menu .release i {
+    background-position-y: 0
+}
+
+.main .side-menu .wallet i {
+    background-position-y: -76px
+}
+
+.main .side-menu .active a,.main .side-menu a:focus,.main .side-menu a:hover {
+    color: #737069
+}
+
+.main .side-menu .active a i,.main .side-menu a:focus i,.main .side-menu a:hover i {
+    background-position-x: 0
+}
+
+.main .side-menu .active a {
+    background-position: 189px -124px
+}
+
+.main .introduction {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 14px 20px;
+    color: #aca8a7
+}
+
+.main .introduction p {
+    margin: 0
+}
+
+.main .introduction strong {
+    font-weight: 300;
+    font-size: 20px
+}
+
+
+.main .content {
+  //  margin-left: 20px;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.main .content .row {
+    margin-bottom: 30px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #eee
+}
+
+.main .content .row>label {
+    display: inline-block;
+    width: 80px;
+    color: #aca8a7;
+    vertical-align: middle
+}
+
+.main .content .row>input {
+    width: 400px;
+    border: none;
+    background-color: inherit
+}
+
+.main .content .row em {
+    font-style: normal;
+    margin-right: 4px
+}
+
+
+.party {
+    float: left
+}
+
+.party h2 {
+    margin-top: 0;
+    font-weight: 400
+}
+
+.party .tips {
+    display: inline-block;
+    visibility: hidden;
+    width: 150px;
+    height: 16px;
+    line-height: 18px;
+    vertical-align: middle;
+    margin-left: 20px;
+    padding-left: 20px;
+    background: url(../images/icon-right-error.png) no-repeat
+}
+
+.party .tips-right {
+    visibility: visible;
+    background-position: 0 0
+}
+
+.party .tips-error {
+    visibility: visible;
+    background-position: 0 -22px;
+    color: #ff6333
+}
+
+.party form .m-input-text {
+    width: 440px;
+    display: inline-block
+}
+
+.party form>div {
+    margin-top: 32px
+}
+
+.party form>div>label {
+    display: inline-block;
+    width: 96px;
+    vertical-align: middle
+}
+
+.party form .verify-phone .m-input-text {
+    width: 110px
+}
+
+.party form .verify-phone .m-btn {
+    font-size: 14px;
+    line-height: 18px;
+    width: 100px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 5px
+}
+
+.party form .verify-phone .not-allowed {
+    cursor: not-allowed;
+    background-color: #e7e5e4;
+    border-color: #e7e5e4
+}
+
+.party form .agreement a,.party form .agreement input,.party form .agreement span {
+    vertical-align: middle
+}
+
+.party form .status {
+    font-size: 12px
+}
+
+.party form .status em {
+    font-style: normal
+}
+
+.party form .status-error em {
+    color: #ff6333
+}
+
+
+.nav_show{
+    width: 700px;
+ // float: left;
+  /* line-height: 46px; */
+ /* margin-left: 20px; */
+  font-size: 18px;
+  margin:10px auto;
+
+}
+
+.m-select-status-text{
+        display:inline-block;
+    padding:7px 0;
+    width:200px;
+    height:35px;
+    border:1px solid #e7e5e4;
+    font-size:14px;
+    line-height:20px;
+    text-indent:10px;
+    background-color:#fff;
+    border-radius:4px;
+    color:#737069;
+    margin-right: 20px;
+};

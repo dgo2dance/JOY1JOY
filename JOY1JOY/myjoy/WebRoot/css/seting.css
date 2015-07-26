@@ -1,0 +1,174 @@
+.main {
+    margin-top: 60px;
+    overflow: hidden
+}
+
+.main .avatar {
+    float: left;
+    width: 246px;
+    text-align: center
+}
+
+.main .avatar a {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    position: relative
+}
+
+.main .avatar a>img {
+      width: 100%;
+          height: 100%;
+          -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.main .avatar a .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 120px;
+    height: 120px;
+    background: url(../images/mask-avatar.png) no-repeat
+}
+
+.main .avatar a>i {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    z-index: 3;
+    background: url(../images/icon-edit.png) no-repeat
+}
+
+.main .content {
+    margin-left: 246px
+}
+
+.main .content .row {
+    margin-bottom: 30px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #eee
+}
+
+.main .content .row>label {
+    display: inline-block;
+    width: 80px;
+    color: #aca8a7;
+    vertical-align: middle
+}
+
+.main .content .row>input {
+    width: 400px;
+    border: none;
+    background-color: inherit
+}
+
+.main .content .row em {
+    font-style: normal;
+    margin-right: 4px
+}
+
+.main .content .row .icon-pull-down {
+    display: inline-block;
+    width: 10px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(../images/icon-pull-down.png) no-repeat
+}
+
+.main .content .birthday>span,.main .content .gender>span {
+    cursor: pointer
+}
+
+.main .content .birthday span {
+    display: inline-block;
+    width: 300px;
+    height: 100%;
+    position: relative;
+    cursor: pointer
+}
+
+.main .content .birthday span>input {
+    position: absolute;
+    width: 100px;
+    border: none;
+    background-color: inherit
+}
+
+.main .content .birthday span>i {
+    margin-left: 84px
+}
+
+.main .content .phone>em {
+    color: #aca8a7
+}
+
+.main .content .status {
+    visibility: hidden
+}
+
+.main .content .status-error {
+    visibility: visible;
+    color: #ff6333
+}
+
+.main .content .status-success {
+    visibility: visible;
+    color: #5cb85c
+}
+
+.main .content .status-loading {
+    visibility: visible
+}
+
+.main .content .row-btn {
+    margin-top: 40px;
+    text-align: center
+}
+
+.main .content .verify-teacher {
+    margin-top: 20px;
+    text-align: center
+}
+
+.main .content .verify-teacher .btn {
+    color: #5dc6f5
+}
+
+.main .content .verify-teacher .btn>i {
+    display: inline-block;
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/icon-verify.png) no-repeat;
+    vertical-align: middle
+}
+
+.main .content .verify-teacher .help {
+    display: inline-block;
+    margin-left: 22px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    background: url(../images/icon-help.png) no-repeat
+}
+
+.help-page .m-popup-main {
+    width: 900px;
+    margin-left: -480px;
+    padding: 30px 25px
+}
+
+.help-page .m-popup-main h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 30px 0
+}
+
+.help-page .m-popup-main li {
+    margin: 14px 0
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.joy1joy.app.dao.TUsersMapper">
+	<resultMap id="BaseResultMap" type="com.joy1joy.app.bean.TUsers">
+		<id column="uid" property="uid" jdbcType="INTEGER" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="CHAR" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="nickname" property="nickname" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="gender" property="gender" jdbcType="INTEGER" />
+		<result column="birthdate" property="birthdate" jdbcType="DATE" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="selectUserByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		*
+		from t_users
+		where userid = #{userid,jdbcType=VARCHAR}
+	</select>
+	<select id="selectUserByNameOrPhone" resultMap="BaseResultMap" parameterType="map">
+		select
+		*
+		from t_users
+		where userid = #{userid,jdbcType=VARCHAR} or mobile = #{mobile,jdbcType=VARCHAR}
+	</select>
+	<select id="selectUserByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		*
+		from t_users
+		where mobile = #{mobile,jdbcType=VARCHAR}
+	</select>
+	<select id="selectTUsersList" resultMap="BaseResultMap">
+		select * from t_users
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_users
+		where uid = #{uid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertTUsers" parameterType="com.joy1joy.app.bean.TUsers">
+		insert into t_users (userid,password,status,type,mobile,icon)
+		values (#{userid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{type,jdbcType=VARCHAR}
+		, #{mobile,jdbcType=VARCHAR},#{icon,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.joy1joy.app.bean.TUsers">
+		update t_users
+		<set>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where uid = #{uid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.joy1joy.app.bean.TUsers">
+		update t_users
+		set userid = #{userid,jdbcType=VARCHAR}
+		,state= #{state,jdbcType=VARCHAR}
+		, gender=#{gender,jdbcType=INTEGER}
+		, birthdate=#{birthdate,jdbcType=DATE}
+		,email=#{email,jdbcType=VARCHAR}
+		, qq=#{qq,jdbcType=VARCHAR}
+		, icon=#{icon,jdbcType=VARCHAR}
+		where uid = #{uid,jdbcType=INTEGER}
+	</update>
+</mapper>

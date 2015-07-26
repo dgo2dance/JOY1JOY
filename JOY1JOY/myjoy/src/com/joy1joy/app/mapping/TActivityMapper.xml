@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joy1joy.app.dao.TActivityMapper">
+	<sql id="activityColumnWithAs">
+		id, name, status, address, stime,etime, type, poster, pnum,get_parti_num(id) as partNum,
+		mark,
+		description,
+		attention, caution, fee, joy_fee as joyFee, gqr,
+		autoSMS,
+		smsContent,
+		cuid, cdatetime, audi_datetime as audiDatetime
+	</sql>
+	<sql id="activityColumnWithAs2">
+		t1.id, t1.name, t1.status, t1.address,
+		(select dvalue from
+		t_dict where dkey=t1.address) as addressName
+		, t1.stime,t1.etime,
+		t1.type,
+		(select dvalue from
+		t_dict where dkey=t1.type) as typeName,
+		t1.poster,
+		t1.pnum,
+		t1.mark,
+		t1.description,
+		t1.attention,
+		t1.caution,
+		t1.fee,
+		t1.joy_fee as joyFee, t1.gqr,
+		t1.autoSMS,
+		t1.smsContent,
+		t1.cuid,
+		t3.userid as cuserName,
+		t3.icon as cuserIcon,
+		t1.cdatetime,
+		t1.audi_datetime as audiDatetime,
+		(select count(*) from
+		t_at_users t2
+		where t2.at_id=t1.id) as partNum
+	</sql>
+	<sql id="activityColumn">
+		name, status, address, stime,etime, type, poster, pnum,
+		mark,
+		description,
+		attention, caution, fee, joy_fee, gqr, autoSMS,
+		smsContent, cuid,
+		cdatetime, audi_datetime
+	</sql>
+	<insert id="insertActivity" useGeneratedKeys="true" keyProperty="id"
+		parameterType="TActiviity">
+		insert into t_activities(
+		<include refid="activityColumn"></include>
+		) values(#{name}, #{status}, #{address}, #{stime},#{etime}, #{type},
+		#{poster},
+		#{pnum}, #{mark},
+		#{description},
+		#{attention}, #{caution},
+		#{fee},
+		#{joyFee}, #{gqr}, #{autoSMS},
+		#{smsContent},
+		#{cuid},
+		#{cdatetime},
+		#{audiDatetime})
+	</insert>
+	<update id="updateActivity">
+		update t_activities set name=#{name},
+		status=#{status}, address=#{address},
+		stime=#{stime},etime=#{etime},
+		type=#{type},
+		poster=#{poster}, pnum=#{pnum}, mark=#{mark},
+		description=#{description},
+		attention=#{attention},
+		caution=#{caution},
+		fee=#{fee},
+		joy_fee=#{joyFee}, gqr=#{gqr},
+		autoSMS=#{autoSMS},
+		smsContent=#{smsContent} where id=#{id}
+	</update>
+	<update id="updateActivityStatus">
+		update t_activities set status=#{status} where
+		id=#{id}
+	</update>
+	<update id="updateAtStatus" parameterType="TActiviity">
+		update t_activities
+		set status=#{status} where 1=1
+		and id=#{id}
+	</update>
+	<select id="getActivityById" parameterType="int" resultType="TActiviity">
+		select
+		<include refid="activityColumnWithAs2"></include>
+		from t_activities t1,t_users t3 where 1=1 and t1.cuid=t3.uid and
+		t1.id=#{id}
+	</select>
+
+	<select id="getActivitiesWithPages" parameterType="page"
+		resultType="TActiviity">
+		select
+		<include refid="activityColumnWithAs2"></include>
+		from t_activities t1 ,t_users t3 where 1=1 and t1.status>0 and
+		t1.status!=4 and
+		t1.cuid=t3.uid
+		<if test="type!=null and type!='all'">
+			and t1.type
+			like CONCAT('%',#{type},'%')
+		</if>
+		<if test="minJoyFee!=null and minJoyFee>=0 and maxJoyFee!=0">
+			<![CDATA[and t1.joy_fee > #{minJoyFee}]]>
+		</if>
+		<if test="maxJoyFee!=null and maxJoyFee>0">
+			<if test="minJoyFee==-2">
+				<![CDATA[ and t1.joy_fee >#{maxJoyFee}]]>
+			</if>
+			<if test="minJoyFee!=-2">
+				<![CDATA[and t1.joy_fee <=#{maxJoyFee}]]>
+			</if>
+		</if>
+		<if
+			test="minJoyFee!=null and maxJoyFee!=null and maxJoyFee==-1 and minJoyFee==-1">
+			and t1.joy_fee=0
+		</if>
+		<if test="time!=null and time>0">
+			and DAYOFWEEK(t1.stime)=#{time}
+		</if>
+		<if test="time!=null and time==-1">
+			and DAYOFWEEK(t1.stime) not in(1,7)
+		</if>
+		<if test="keyWord!=null and keyWord!=''">
+			and (t1.name like CONCAT('%',#{keyWord},'%') or
+			t1.description like CONCAT('%',#{keyWord},'%') or t1.attention like
+			CONCAT('%',#{keyWord},'%') or t1.caution like
+			CONCAT('%',#{keyWord},'%'))
+		</if>
+		order by t1.id desc limit #{start},#{size}
+	</select>
+	<select id="getActivitiesCount" parameterType="page" resultType="TActiviity">
+		select
+		count(*) as num
+		from t_activities where 1=1
+		<if test=""></if>
+		order by id desc
+	</select>
+
+	<select id="getOrgActivitiesWithPages" parameterType="page"
+		resultType="TActiviity">
+		select
+		<include refid="activityColumnWithAs2"></include>
+		from t_activities t1,t_users t3
+		where 1=1 and t1.cuid=t3.uid and
+		t1.cuid=#{uid}
+		order by
+		id
+		desc limit
+		#{start},#{size}
+	</select>
+	<select id="getOrgActivitiesWithPagesCount" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		select count(*) from t_activities t2,t_users t3 where 1=1
+		and
+		t2.cuid=t3.uid and
+		t2.cuid=#{uid}
+		order by
+		id desc
+	</select>
+
+	<select id="getAllActivitiesWithPages" parameterType="page"
+		resultType="TActiviity">
+		select
+		<include refid="activityColumnWithAs"></include>
+		from t_activities where 1=1
+		<if test="status!=null and status!=-100">
+			and status=#{status}
+		</if>
+		order by cdatetime desc limit
+		#{start},#{size}
+	</select>
+	<select id="getAllActivitiesCount" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		select
+		count(*)
+		from t_activities where 1=1
+		<if test="status!=null and status!=-100">
+			and status=#{status}
+		</if>
+		order by cdatetime desc
+	</select>
+
+
+
+</mapper>

@@ -1,0 +1,24 @@
+/*
+Date:20150502
+Author:duansy
+Des:公告页面CSS
+Version:
+*/
+ 
+.notice_bar{ width:100%;}
+.notice_inner{ width:980px; margin:0 auto;}
+.tab1{ float:left; margin-left:20px;}
+.tab1 li{ float:left; line-height:46px;}
+.tab1 li a{ margin-right:40px; font-size:16px;}
+.tab1 li a:hover{ text-decoration:underline;}
+.tab1 .selected{ color:#4acdf0;}
+.n_list{ width:980px; margin:0 auto;}
+.n_list h3{ font-size:18px; font-weight:100; line-height:30px; margin:20px 0 0 0; border-bottom:1px solid #e6e6e6; padding-bottom:20px;
+padding-left:20px;}
+.n_list li{ border-bottom:1px solid #e6e6e6; padding:20px 0 20px 20px;}
+.n_list li a{ color:#347a9f; font-size:18px;}
+.n_list li a:hover{ text-decoration:underline;}
+.n_list li p{ line-height:24px;}
+.gray{ color:afa39e; font-size:12px; margin-top:6px;}
+.blank{ color:#333; font-size:14px;}
+

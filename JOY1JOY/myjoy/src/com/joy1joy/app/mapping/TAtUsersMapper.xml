@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joy1joy.app.dao.TAtUsersMapper">
+	<insert id="insertTAtUser" parameterType="TAtUsers">
+		insert into
+		t_at_users(id,at_id,uid,pnum,addtime)values(null,#{atid},#{uid},#{pnum},#{addtime})
+	</insert>
+	<delete id="deleteTAtUser">
+		delete from t_at_users where id=#{id}
+	</delete>
+	<select id="selectTAtUser" parameterType="TAtUsers" resultType="TAtUsers">
+		select id,at_id as atid,uid,pnum,addtime from t_at_users where 1=1 and
+		at_id=#{atid} and uid=#{uid}
+	</select>
+	<select id="getAtJoinCount" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		select sum(pnum) from t_at_users where 1=1 and at_id=#{id}
+	</select>
+	<select id="selectPartiUsersList" parameterType="java.lang.Integer"
+		resultType="partiUser">
+		select t1.id,t1.at_id as atid,t1.uid,t2.joy_fee*t1.pnum as
+		joyFee,t3.userid,t3.mobile,t3.icon,t1.addtime as partiTime,t1.pnum as
+		partiNum,t2.name,t2.pnum as atNum from t_at_users t1,t_activities
+		t2,t_users t3 where 1=1 and
+		t1.at_id=#{id} and t1.at_id=t2.id and
+		t1.uid=t3.uid order by
+		t1.addtime
+		asc
+	</select>
+	<select id="selectExportPartiUsers" parameterType="java.util.Map"
+		resultType="partiUser">
+		select t1.id,t1.at_id as atid,t1.uid,t2.joy_fee as
+		joyFee,t3.userid,t3.mobile,t3.icon,t1.addtime as partiTime,t1.pnum as
+		partiNum,t2.name,t2.pnum as atNum from t_at_users t1,t_activities
+		t2,t_users t3 where 1=1 and
+		t1.at_id=#{id} and t1.id in
+		<foreach collection="ids" item="item" separator="," open="("
+			close=")">#{item}</foreach>
+		and
+		t1.at_id=t2.id and
+		t1.uid=t3.uid order by
+		t1.addtime
+		asc
+	</select>
+	<select id="selectRecent" resultType="java.util.Map">
+		select t1.at_id,t1.addtime,
+		t2.userid,t2.nickname,t3.name from t_at_users
+		t1,t_users
+		t2,t_activities t3 where 1=1 and t1.uid=t2.uid and
+		t1.at_id=t3.id
+		order
+		by addtime desc limit 0,6
+	</select>
+	<select id="selectJoinAtCount" parameterType="page" resultType="java.lang.Integer">
+		select
+		count(*) from
+		t_at_users
+		t1 ,t_activities t2
+		where
+		1=1 and
+		t1.uid=#{uid} and
+		t1.at_id=t2.id
+		order
+		by addtime desc
+	</select>
+	<select id="selectJoinAt" parameterType="page" resultType="join">
+		select
+		t1.at_id as atid,t2.name,t1.addtime from t_at_users
+		t1
+		,t_activities t2
+		where
+		1=1 and t1.uid=#{uid} and
+		t1.at_id=t2.id
+		order
+		by
+		addtime desc limit
+		#{start},#{size}
+	</select>
+</mapper>

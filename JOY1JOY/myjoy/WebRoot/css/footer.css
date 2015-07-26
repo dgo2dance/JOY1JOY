@@ -1,0 +1,15 @@
+/*
+Date:20150502
+Author:duansy
+Des:底部通用CSS
+Version:
+*/
+
+.m-footer_inner{ width:980px; margin:0 auto;}
+.m-footer_inner_list{ margin-right:100px; display:inline-block; float:left;}
+.m-footer_inner_list li{ line-height:22px;}
+.m-footer-follow li{ line-height:22px;}
+.m-footer_inner_list li h3{ margin-bottom:15px; color:#ffffff; font-size: 14px; font-weight: 300;}
+.m-footer-follow li h3{ margin-bottom:15px; color:#ffffff;}
+.m-footer_inner_list a{ color:#ffffff;}
+.m-footer_inner_list a:hover{ text-decoration:underline; color:#fff;}

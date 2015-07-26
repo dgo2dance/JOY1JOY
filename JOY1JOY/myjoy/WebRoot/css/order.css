@@ -1,0 +1,142 @@
+/*
+Date:20150502
+Author:duansy
+Des:底部通用CSS
+Version:
+*/
+
+
+.theader {
+    overflow: hidden;
+    padding: 20px 0
+}
+
+.theader>h2 {
+    float: left;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400
+}
+
+.theader>div {
+    float: right
+}
+
+.theader .price-origin {
+    color: #aca8a7;
+    margin-right: 10px;
+    vertical-align: bottom
+}
+
+.theader .price-origin>del {
+    vertical-align: bottom
+}
+
+.theader .price-now {
+    margin-right: 10px;
+    vertical-align: bottom
+}
+
+.theader .price-now em {
+    line-height: 35px;
+    font-size: 36px;
+    font-style: normal;
+    color: #ff6333;
+    vertical-align: bottom
+}
+
+.tbody table {
+    border-collapse: collapse;
+    font-size: 16px;
+    width: 100%
+}
+
+.tbody .th {
+    font-size: 14px
+}
+
+.tbody .th em {
+    font-style: normal;
+    color: #5dc6f5
+}
+
+.tbody .col-1 {
+    width: 20px
+}
+
+.tbody .col-2 {
+    width: 180px
+}
+
+.tbody .col-3 {
+    width: 230px
+}
+
+.tbody .col-4 {
+      width: 280px;
+    text-align: center
+}
+
+.tbody .col-5 {
+      width: 160px;
+    text-align: center
+}
+
+.tbody tr {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee
+}
+
+.tbody td,.tbody th {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+.tbody img {
+    width: 90px
+}
+
+.tbody .price {
+    color: #5dc6f5
+}
+
+.tfooter {
+    line-height: 66px
+}
+
+.paied-tips {
+    text-align: center
+}
+
+.paied-tips .top {
+    margin-top: 40px;
+    color: #0ed6b1;
+    font-size: 20px
+}
+
+.paied-tips .top i {
+    display: inline-block;
+    margin-right: 10px;
+    width: 26px;
+    height: 26px;
+    background: url(/img/icon-warn.png) no-repeat;
+    vertical-align: top
+}
+
+.paied-tips p {
+    margin-top: 20px;
+    line-height: 1.8;
+    color: #aca8a7
+}
+
+.paied-tips .bottom {
+    margin-top: 60px
+}
+
+.paied-tips .bottom a {
+    margin: 0 23px
+}
+
+.main {
+    margin-top: 30px
+}

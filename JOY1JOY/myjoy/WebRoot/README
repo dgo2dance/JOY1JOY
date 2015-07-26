@@ -1,0 +1,30 @@
+工程结构说明:
+1.采用S2SI框架技术，注解模式
+	a.控制器层的配置：struts.xml
+	b.spring、myibates的配置：applicationContext.xml
+	c.jdbc配置：dataSource.properties
+
+2.视图文件目录：/JOY-1-JOY/WebRoot/WEB-INF/content/
+
+3.图片、样式、脚本文件目录：/JOY-1-JOY/WebRoot/image、css、js
+
+4.业务逻辑实现源码目录:以模块功能为整个包(例子：card)
+	a.DAO层：com.yt.card.dao
+	b.Service层：com.yt.card.service
+	c.实体类：com.yt.card.bean
+	d.控制器层：com.yt.card.actions
+	
+规范：
+1、不允许直接使用拼音命令类名、包类、方法名、URL。
+2、包名、类名、方法命名、URL时，使用简短且具有实际意义的单词，如：订单：Order
+3、控制器命名时，建议每个控制器类带Action后缀，如订单控制器 OrderAction。
+4、URL定义时，尽量使用类似命名空间的方式定义。
+5、Dao层需要定义一个*Mapper类，此类中的方法名要与mapping包中xml的方法一致，示例：CardMapper类
+中的selectCardList方法，要与CardMapper.xml中定义的方法一致
+6、Service层的接口定义示例：订单管理接口 => IOrderService，实现类：OrderServiceImpl。
+7、Service层负责处理业务逻辑（判断参数有效性，根据参数调用DAO层的CRUD操作记录）。
+8、DAO层负责实现CRUD操作，不建议在DAO接口实现过多的业务逻辑，尽量将业务逻辑转移至SERVICE层。
+9、控制层负责实现获取和输出与终端用户交互的数据，适当权衡业务层与控制层的业务逻辑分离，控制好每一层负责关键点。
+10、实现一个全局配置对象，用于在全局上下文中获取系统配置信息。
+11、按工程的目录说明，放置相应的代码。
+12、注意编写代码的注释。

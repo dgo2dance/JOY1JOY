@@ -1,0 +1,108 @@
+/*
+Date:20150502
+Author:duansy
+Des:底部通用CSS
+Version:
+*/
+
+.main {
+    margin-top: 30px;
+    overflow: hidden
+}
+
+.register {
+    float: left
+}
+
+.register h2 {
+    margin-top: 0;
+    font-weight: 400
+}
+
+.register .tips {
+    display: inline-block;
+    visibility: hidden;
+    width: 150px;
+    height: 16px;
+    line-height: 18px;
+    vertical-align: middle;
+    margin-left: 20px;
+    padding-left: 20px;
+    background: url(../images/icon-right-error.png) no-repeat
+}
+
+.register .tips-right {
+    visibility: visible;
+    background-position: 0 0
+}
+
+.register .tips-error {
+    visibility: visible;
+    background-position: 0 -22px;
+    color: #ff6333
+}
+
+.register form .m-input-text {
+    width: 220px;
+    display: inline-block
+}
+
+.register form>div {
+    margin-top: 25px
+}
+
+.register form>div>label {
+    display: inline-block;
+    width: 96px;
+    vertical-align: middle
+}
+
+.register form .verify-phone .m-input-text {
+    width: 110px
+}
+
+.register form .verify-phone .m-btn {
+    font-size: 14px;
+    line-height: 18px;
+    width: 100px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 5px
+}
+
+.register form .verify-phone .not-allowed {
+    cursor: not-allowed;
+    background-color: #e7e5e4;
+    border-color: #e7e5e4
+}
+
+.register form .agreement a,.register form .agreement input,.register form .agreement span {
+    vertical-align: middle
+}
+
+.register form .status {
+    font-size: 12px
+}
+
+.register form .status em {
+    font-style: normal
+}
+
+.register form .status-error em {
+    color: #ff6333
+}
+
+.download {
+    float: right
+}
+
+.download img {
+    margin-right: 100px
+}
+
+
+.regedit_rig{ width:240px; float:left; margin:40px 0 0 120px;}
+.reg_login li,.reg_otherAccount li{ line-height:24px;}
+.reg_login li a{ color:#336ba2;}
+.zreg_login li a:hover{ text-decoration:underline;}
+.reg_otherAccount{ margin-top:30px;}

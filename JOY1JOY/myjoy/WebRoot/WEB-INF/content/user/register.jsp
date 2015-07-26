@@ -100,8 +100,10 @@
             <li><a href="javascript:void(0);" class="flatLogin">立即登录>></a></li>
         </ul>
       <ul class="reg_otherAccount">
+      <!--
           <li>使用第三方账户登录</li>
             <li><a href="javascript:void(0);"><img src="<%=path %>images/weibo_ico.jpg" /></a></li>
+	    -->
         </ul>
     </div>
 

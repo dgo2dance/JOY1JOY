@@ -597,8 +597,8 @@ width:100px;
 	padding:0 14px;
 	width:94px;
 	border:1px solid #eee;
-	border-top:0£»
-	background-color: #fff;
+	border-top:0;
+		background-color: #fff;
 }
 .m-account .m-account-logined li {
 	margin-top:-1px;

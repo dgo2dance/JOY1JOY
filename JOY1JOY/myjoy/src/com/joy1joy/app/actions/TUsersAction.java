@@ -11,7 +11,10 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+
+import javax.servlet.http.Cookie;
 
 import net.sf.json.JSONObject;
 
@@ -22,6 +25,9 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import api.ucenter.Client;
+import api.ucenter.XMLHelper;
 
 import com.joy1joy.app.actions.base.BaseAction;
 import com.joy1joy.app.bean.TUsers;
@@ -126,7 +132,7 @@ public class TUsersAction extends BaseAction {
         //System.out.println("-----verifyCode:"+verifyCode.toLowerCase());
         session.put("imageCode","");
         session.put("imageCode", verifyCode.toLowerCase());  
-        //System.out.println("-------------"+session.get("imageCode"));
+        System.out.println("-------------"+session.get("imageCode"));
         //生成图片  
         int w = 200, h = 80;  
         VerifyCodeUtils.outputImage(w, h, getResponse().getOutputStream(), verifyCode); 
@@ -187,7 +193,33 @@ public class TUsersAction extends BaseAction {
 				users.setIcon("/images/userHeadImg/default.png");
 				boolean isResult = this.userService.addUsers(users);
 				if (isResult) {
+					// add by duansy 20150801
+					Client uc = new Client();
+					String $returns = uc.uc_user_register("duansy", "123", "duanshuyong0@163.com");
+					int $uid = Integer. parseInt ($returns); 
+					if ($uid <= 0) { 
+					if ($uid == -1) { 
+					System. out .print("用户名不合法"); 
+					} else if ($uid == -2) { 
+					System. out .print("包含要允许注册的词语"); 
+					} else if ($uid == -3) { 
+					System. out .print("用户名已经存在"); 
+					} else if ($uid == -4) { 
+					System. out .print("Email 格式有误"); 
+					} else if ($uid == -5) { 
+					System. out .print("Email 不允许注册"); 
+					} else if ($uid == -6) { 
+					System. out .print("该 Email 已经被注册"); 
+					} else { 
+					System. out .print("未定义"); 
+					}
+					}
+					System. out .println("id:"+$uid);
+					System. out .println("添加成功！");
+					// end by duansy 20150801
+					
 					jsonObject.put("result", "success");
+					
 				} else {
 					jsonObject.put("result", "fail");
 				}
@@ -216,7 +248,95 @@ public class TUsersAction extends BaseAction {
 				if (users.getPassword().equals(PasswordMD5.createEncryptPSW(password))) {
 
 					session.put("users", users);
+					
+					//add by duansy 20150801 ucenter login in
+					Client uc = new Client();
+
+					String $result = uc.uc_user_login("hello", "123456");
+
+					String $ucsynlogin = "";
+
+					LinkedList<String> rs = XMLHelper. uc_unserialize ($result);
+
+					if (rs.size()>0){
+
+					int $uid = Integer. parseInt (rs.get(0));
+
+					String $username = rs.get(1);
+
+					String $password = rs.get(2);
+
+					String $email = rs.get(3);
+
+					if ($uid > 0) {
+
+					$ucsynlogin = uc.uc_user_synlogin($uid);
+
+					} else if ($uid == -1) {
+
+					System. out .println("用户不存在,或者被删除");
+
+					} else if ($uid == -2) {
+
+					System. out .println("密码错");
+
+					} else {
+
+					System. out .println("未定义");
+
+					}
+					session.put("synclogin", $ucsynlogin);
+
+					//设置本地 Discuz 登录的cookie信息，cookie存活时间
+
+					//直接访问论坛就有用户信息了
+
+					try {
+
+					response.setCharacterEncoding("UTF-8");
+
+					//同步Cookie信息
+
+//					                response.addHeader("P3P"," CP=\"CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR\"");
+//
+//					              Cookie auth = new Cookie("auth", uc.uc_authcode($password+"\t"+$uid , "ENCODE"));
+//
+//				              auth.setMaxAge(31536000);
+//
+//				              //auth.setDomain(" localhost ");//设置本地cookie
+//
+//					              response.addCookie(auth);
+//
+//					              Cookie user = new Cookie("Discuz_loginuser", $username );
+//
+//					              response.addCookie(user);
+
+					//把返回过来的 js 文件直接输出在页面上，然后跳转到论坛网站首页就已经是登录之后的
+
+				//	PrintWriter ucout = response.getWriter();
+
+			//		out.write($ucsynlogin);
+
+			//		out.flush();         
+                  } catch (Exception e) {
+
+					// TODO Auto-generated catch block
+
+					e.printStackTrace();
+
+					}
+
+					} else {
+
+					System. out .println("Login failed");
+
+					}
+					// end by duansy 20150801
+					
+					
 					jsonObject.put("result", "success");
+					jsonObject.put("syclogin", $ucsynlogin);
+
 				} else {
 					jsonObject.put("result", "passError");
 				}
@@ -347,6 +467,12 @@ public class TUsersAction extends BaseAction {
 	public String exit()
 	{
 		session.remove("users");
+		// add by duansy 20150801
+		Client uc = new Client();
+		String $ucsynlogout = uc.uc_user_synlogout();
+        session.put("synclogin", $ucsynlogout);
+		System.out.println("退出成功"+$ucsynlogout);
+		//end  by duansy 
 		return C_SUCCESS;
 	}
 	

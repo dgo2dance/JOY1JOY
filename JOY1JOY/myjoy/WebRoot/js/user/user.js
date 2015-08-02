@@ -23,22 +23,28 @@ function SetRemainTime() {
 function refreshRandCode(){
 	var url=joy.getContextPath()+'/user/genericImage.action?rnd=' + Math.random();
 	$("#randCodeImg").attr("src",url);
-	$.ajax({
-		 url:joy.getContextPath()+'/user/refreshCode.action',
-		 type:'post',
-		// data:{userPhone:phone},
-		 cache:false,
-		 dataType:'json',
-		 success:function(re)
-		 {
-			 //alert(re.result);
-			 $("#imageCodeValue").attr("value",re.result);
-		 } ,error:function(e)
-		 {
-			 joy.alert(e);
-			 return;
-		 }
-	});
+	//alert($("#randCodeImg").attr("src"));
+	/*
+	if($("#randCodeImg").attr("src")!="")
+	{
+		$.ajax({
+			 url:joy.getContextPath()+'/user/refreshCode.action',
+			 type:'post',
+			 async: false,
+			// data:{userPhone:phone},
+			 cache:false,
+			 dataType:'json',
+			 success:function(re)
+			 {
+				 $("#imageCodeValue").attr("value",re.res);
+			 },error:function(e)
+			 {
+				 joy.alert(e);
+				 return;
+			 }
+		});
+	}
+	*/
 	
 }
 $(function(){
@@ -56,17 +62,46 @@ $(function(){
 			 return;
 		}else
 		{
-			var sessionCode=$("#imageCodeValue").val();
+		//	var comres=false;
+			var comres=true;
+			$.ajax({
+				 url:joy.getContextPath()+'/user/refreshCode.action',
+				 type:'post',
+				 async: false,
+				// data:{userPhone:phone},
+				 cache:false,
+				 dataType:'json',
+				 success:function(re)
+				 {
+					 //alert(re.res);
+					 if(codeValue.toLowerCase()!=re.result)
+						{
+						 	
+					//		joy.alert("图形验证码输入错误");
+							return;
+						}else
+						{
+							comres=true;
+						}
+					 //$("#imageCodeValue").attr("value",re.res);
+				 },error:function(e)
+				 {
+					 joy.alert(e);
+					 return;
+				 }
+			});
+			//var sessionCode=$("#imageCodeValue").val();
 			//alert(codeValue.toLowerCase());
 			//alert(sessionCode);
 			//alert(codeValue.toLowerCase()!=sessionCode);
-			if(codeValue.toLowerCase()!=sessionCode)
+			//alert(comres);
+			if(comres)
 			{
-				joy.alert("图形验证码输入错误");
-				return;
-			}
-			else
-			{
+				//joy.alert("图形验证码输入错误");
+				//return;
+			//}
+			//else
+			//{
 				var phone=$("#userName").val();
 				if(phone!="")
 				{
@@ -138,10 +173,10 @@ $(function(){
 					 if(re.result!="success")
 					 {
 						 //$("#codBtn").val("error");
-						 $("#codBtn").attr("value","error");
+					//	 $("#codBtn").attr("value","error");
 						 if(re.result=="timeout")
 						 {
-							 joy.alert("短信验证码不正确或已过期!");
+						//	 joy.alert("短信验证码不正确或已过期!");
 							 
 							 return;
 						 }else
@@ -405,9 +440,11 @@ $(function(){
 				 success:function(re)
 				 {
 					 if(re.result=="success")
-					 {
+					 {   
+						
 						 window.location = joy.getContextPath() + "/home.action?d="
 							+ new Date();
+						// $('body').append(re.syclogin);
 					 }
 					 if(re.result=="passError")
 					 {

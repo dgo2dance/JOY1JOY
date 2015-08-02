@@ -59,6 +59,18 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
+	
+		  <servlet>
+	    <display-name>同步UC Server发出的操作指令</display-name>
+	    <servlet-name>UC</servlet-name>
+	    <servlet-class>api.ucenter.UC</servlet-class>
+	    <load-on-startup>2</load-on-startup>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>UC</servlet-name>
+	    <url-pattern>/api/uc.php</url-pattern>
+	  </servlet-mapping>
+  
 
 	<welcome-file-list>
 		<welcome-file>/WEB-INF/index.jsp</welcome-file>

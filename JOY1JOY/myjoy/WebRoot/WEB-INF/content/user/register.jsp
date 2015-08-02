@@ -47,8 +47,9 @@
     vertical-align: middle";/></img>
          <span class="tips tips-error" id="imageCodeSpan"><i></i><em></em></span>
          
-          
+          <!--  
            <input type="hidden" id="imageCodeValue" value=""/>
+           -->
       </div>
       	<div class="verify-phone">
       	 <label></label>

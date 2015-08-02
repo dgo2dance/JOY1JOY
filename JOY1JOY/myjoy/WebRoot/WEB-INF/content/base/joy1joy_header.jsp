@@ -11,7 +11,14 @@
 		path = "/";
 	}
 %>
-
+	<%
+		Object syncs = request.getSession().getAttribute("synclogin");
+		String s=(String)syncs;
+		if (null != s) {
+	%>
+	<%=s%>
+	<% } %>
+	
 <input type="hidden" id="joy-context-path" value="<%=path%>" />
 <div class="m-header">
 	<div class="wrap">
@@ -25,7 +32,7 @@
 			<li><a data-api="hot" href="<%=path%>home.action" class="">首页</a></li>
 			<li><a data-api="expert" href="<%=path%>at/atlist.action"
 				class="">找活动</a></li>
-			<li><a data-api="newest" href="http://bbs.joy1joy.com" class="" target="_blank">动社区</a></li>
+			<li><a data-api="newest" href="http://127.0.0.1/joy1joy/forum.php" class="" target="_blank">动社区</a></li>
 		</ul>
 
 		<form id="header-search-form" class="m-header-search" action="#"

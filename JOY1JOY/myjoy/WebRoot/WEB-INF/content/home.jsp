@@ -128,22 +128,23 @@
 		</div>
 	</div>
 
-
+    <!-- 
 	<div class="m-article">
 
 		<div class="footer_top">
 
-		<!--  	<img src="<%=path%>images/footer_top.jpg">  -->
+	 	<img src="<%=path%>images/footer_top.jpg">  
 		</div>
+		 
 		<div class="footer_mid">
 			<div class="footer_inner">
 
-				<!-- <ul class="f_list1">
+				 <ul class="f_list1">
               <li><p>前往论坛讨论区</p></li>
                 <li><img src="images/t_code.jpg" /></li>
                 <li><a href="#"> >>前往论坛讨论区 </a></li>
             </ul>
-            -->
+          
 				<ul class="f_inner_list" id="home-knowledge">
 					<li><h3>
 							<a
@@ -163,10 +164,12 @@
 
 				</ul>
 				<div class="clear"></div>
+				
 			</div>
 		</div>
+		
 	</div>
-
+ -->
 
 	<div class="footer-placeholder"></div>
 

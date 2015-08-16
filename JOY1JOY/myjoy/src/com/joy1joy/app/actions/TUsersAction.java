@@ -110,6 +110,9 @@ public class TUsersAction extends BaseAction {
 	private String imageFileName;
 	private String imageNum;
 	private String phoneCode;
+	private String mobile;
+
+
 	// 引入业务层
 	@Autowired
 	ITUserService userService;
@@ -167,7 +170,8 @@ public class TUsersAction extends BaseAction {
 	@Action(value = "jumpUserDetail", results = { @Result(name = "success", location = "/WEB-INF/content/user/userModify.jsp") })
 	public String toUserDetail() {
 		TUsers t_user = (TUsers) session.get("users");
-		t_user = this.userService.findUserByPhone(t_user.getMobile());
+	//	t_user = this.userService.findUserByPhone(t_user.getMobile());
+		t_user = this.userService.findUserByName(t_user.getUserid());
 		ActionContext.getContext().put("tUsers", t_user);
 		return C_SUCCESS;
 	}
@@ -179,14 +183,15 @@ public class TUsersAction extends BaseAction {
 		try {
 			out = getResponse().getWriter();
 			String image_code=(String)session.get("imageCode");
-			if(!imageNum.toLowerCase().equals(image_code))
-			{
-				jsonObject.put("result", "codeFail");
-			}else
-			{
+//			if(!imageNum.toLowerCase().equals(image_code))
+//			{
+//				jsonObject.put("result", "codeFail");
+//			}else
+//			{
 				TUsers users = new TUsers();
-				users.setUserid(userPhone);
+				users.setUserid(userId);
 				users.setMobile(userPhone);
+				users.setEmail(email);
 				users.setPassword(PasswordMD5.createEncryptPSW(password));
 				users.setStatus(TUsers.USER_STATUE_NORMAL);
 				users.setType(TUsers.USER_COMMON);
@@ -195,7 +200,7 @@ public class TUsersAction extends BaseAction {
 				if (isResult) {
 					// add by duansy 20150801
 					Client uc = new Client();
-					String $returns = uc.uc_user_register("duansy", "123", "duanshuyong0@163.com");
+					String $returns = uc.uc_user_register(userId, password, email);
 					int $uid = Integer. parseInt ($returns); 
 					if ($uid <= 0) { 
 					if ($uid == -1) { 
@@ -223,7 +228,7 @@ public class TUsersAction extends BaseAction {
 				} else {
 					jsonObject.put("result", "fail");
 				}
-			}
+	//		}
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -252,7 +257,7 @@ public class TUsersAction extends BaseAction {
 					//add by duansy 20150801 ucenter login in
 					Client uc = new Client();
 
-					String $result = uc.uc_user_login("hello", "123456");
+					String $result = uc.uc_user_login(userId, password);
 
 					String $ucsynlogin = "";
 
@@ -359,7 +364,8 @@ public class TUsersAction extends BaseAction {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			out = this.getResponse().getWriter();
-			TUsers users = this.userService.findUserByPhone(userPhone);
+		//	TUsers users = this.userService.findUserByPhone(userPhone);
+			TUsers users = this.userService.findUserByName(userId);
 			if (null != users) {
 
 				jsonObject.put("result", "exit");
@@ -389,6 +395,7 @@ public class TUsersAction extends BaseAction {
 			user.setEmail(email);
 			user.setQq(qq);
 			user.setState(state);
+			user.setMobile(mobile);
 			//user.setUserid(userId);
 			user.setGender(Integer.valueOf(gender));
 			if (fileName != null && !fileName.equals("")) {
@@ -609,13 +616,7 @@ public class TUsersAction extends BaseAction {
 		this.birthday = birthday;
 	}
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public String getIcon() {
 		return icon;
@@ -656,7 +657,23 @@ public class TUsersAction extends BaseAction {
 	public void setImageNum(String imageNum) {
 		this.imageNum = imageNum;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 	
 
 }

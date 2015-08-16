@@ -1,5 +1,6 @@
 package api.ucenter;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,8 +19,36 @@ public abstract class PHPFunctions {
 	//JAVA EXTRA METHOD
 	
 	protected String urlencode(String value){
-		return URLEncoder.encode(value);
+	//	return URLEncoder.encode(value);
+		String ss= null;
+	try {
+			  ss=URLEncoder.encode(value,"UTF-8");
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
+	return ss;
+	}
+	
+	protected
+	String urlencode(String value,String code){
+	         try
+	{
+	             return
+	URLEncoder.encode(value,code);
+	         }
+	catch
+	(UnsupportedEncodingException e) {
+
+	             // TODO Auto-generated catch block
+
+	             e.printStackTrace();
+
+	         }
+	             return
+	null;
+	     }
+	
 	protected String md5(String input){
 		MessageDigest md;
 		try {

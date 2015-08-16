@@ -49,7 +49,7 @@ function refreshRandCode(){
 }
 $(function(){
 	
-	refreshRandCode();
+	// refreshRandCode();
 	//发送验证码
 	$("#userCode").click(function(e){
 		e.preventDefault();
@@ -216,18 +216,28 @@ $(function(){
 		});
 		$("#reg_btn").click(function(){
 			var goRes=true;
+			var userId=$("#userId").val();
+
 			var userName=$("#userName").val();
-			var phoneCode=$("#phoneCode").val();
-			var imageCode=$("#imageCode").val();
+			var email=$("#userEmail").val();
+//			var phoneCode=$("#phoneCode").val();
+//			var imageCode=$("#imageCode").val();
 			var onePass=$("#onePass").val();
 			var twoPass=$("#twoPass").val();
 			var isMobile=/^(?:13\d|15\d|18\d)\d{5}(\d{3}|\*{3})$/;
 			
-			if(userName=="")
-			{
-				$("#phoneSpan").html("注册手机号不能为空");
-				goRes=false;
-			}
+			
+			
+			if(userId=="")
+				{
+					$("#userIdSpan").html("用户名不能为空");
+					goRes=false;
+				}
+//			if(userName=="")
+//			{
+//				$("#phoneSpan").html("注册手机号不能为空");
+//				goRes=false;
+//			}
 			//alert("0:"+goRes);
 			if(userName!="")
 			{
@@ -239,26 +249,26 @@ $(function(){
 				
 			}
 			//alert("1:"+goRes);
-			if(phoneCode=="")
-			{
-				$("#codeSpan").html("手机验证码不能为空");
-				goRes=false;
-			}
+//			if(phoneCode=="")
+//			{
+//				$("#codeSpan").html("手机验证码不能为空");
+//				goRes=false;
+//			}
 			//alert("2:"+goRes);
-			if(phoneCode!="")
-			{
-				if($("#codBtn").val()!="")
-				{
-					goRes=false;
-				}
-				//alert($("#codBtn").val()+"3:"+goRes);
-			}
+//			if(phoneCode!="")
+//			{
+//				if($("#codBtn").val()!="")
+//				{
+//					goRes=false;
+//				}
+//				//alert($("#codBtn").val()+"3:"+goRes);
+//			}
 			//alert("3:"+goRes);
-			if(imageCode=="")
-			{
-				$("#imageCodeSpan").html("图形验证码不能为空");
-				goRes=false;
-			}
+//			if(imageCode=="")
+//			{
+//				$("#imageCodeSpan").html("图形验证码不能为空");
+//				goRes=false;
+//			}
 			//alert(goRes);
 			if(onePass=="")
 			{
@@ -301,7 +311,8 @@ $(function(){
 					$.ajax({
 						 url:joy.getContextPath() +'/user/findUser.action',
 						 type:'post',
-						 data:{userPhone:userName},
+					//	 data:{userPhone:userName},
+						 data:{userId:userId},
 						 cache:false,
 						 dataType:'json',
 						 success:function(re)
@@ -312,7 +323,7 @@ $(function(){
 								 $.ajax({
 									 url:joy.getContextPath() +'/user/saveUser.action',
 									 type:'post',
-									 data:{userPhone:userName,password:twoPass,imageNum:imageCode},
+									 data:{userId:userId,userPhone:userName,email:email,password:twoPass},
 									 cache:false,
 									 dataType:'json',
 									 success:function(re)
@@ -343,7 +354,8 @@ $(function(){
 							 }
 							 if(re.result=="exit")
 							 {
-								 joy.alert("手机号已存在注册");
+							//	 joy.alert("手机号已存在注册");
+								 joy.alert("用户名已存在注册");
 								 return;
 							 }
 							 if(re.result=="fail")

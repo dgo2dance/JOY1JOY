@@ -35,11 +35,36 @@
 
     <form id="register">
     
+       <div class="userId">
+        <label> 用户名：</label> 
+          <input class="m-input-text" id="userId" type="text" name="id" placeholder="用户名"><em class="redstar"> * </em>
+      <span class="tips tips-error" id="userIdSpan"><i></i><em></em></span>
+       </div>
+    
+      <div class="password">
+      <label>设置密码：</label>
+      <input id="onePass" class="m-input-text" type="password" name="password" placeholder="输入6~18位字符"><em class="redstar"> * </em>
+      <span class="tips tips-error" id="oneSpan"><i></i><em></em></span>
+      </div>
+      <div class="repassword">
+        <label>重复密码：</label>
+        <input id="twoPass" class="m-input-text" type="password" name="repassword" placeholder="输入6~18位字符"><em class="redstar"> * </em>
+        <span class="tips tips-error" id="twoSpan"><i></i><em></em></span>
+      </div>
+      
+       <div class="userEmail">
+        <label> 邮箱：</label> 
+          <input class="m-input-text" id="userEmail" type="text" name="mail" placeholder="邮箱"><em class="redstar"> * </em>
+      <span class="tips tips-error" id="userEailSpan"><i></i><em></em></span>
+       </div>
+      
+          
       <div class="phone">
-        <label>注册手机：</label>
+        <label>手机号：</label>
         <input class="m-input-text" id="userName" type="text" name="phone" placeholder="手机号码">
         <span class="tips tips-error" id="phoneSpan"><i></i><em></em></span>
       </div>
+      <!--  
 	<div class="verify-phone">
         <label>图形验证码：</label>
         <input class="m-input-text" type="text" id="imageCode" name="imageCode" placeholder="图形验证码"/>
@@ -47,9 +72,9 @@
     vertical-align: middle";/></img>
          <span class="tips tips-error" id="imageCodeSpan"><i></i><em></em></span>
          
-          <!--  
+         
            <input type="hidden" id="imageCodeValue" value=""/>
-           -->
+        
       </div>
       	<div class="verify-phone">
       	 <label></label>
@@ -63,18 +88,8 @@
         
         <input type="hidden" id="codBtn" value=""/>
       </div>
-
-      <div class="password">
-        <label>设置密码：</label>
-        <input id="onePass" class="m-input-text" type="password" name="password" placeholder="输入6~18位字符">
-        <span class="tips tips-error" id="oneSpan"><i></i><em></em></span>
-      </div>
-
-      <div class="repassword">
-        <label>重复密码：</label>
-        <input id="twoPass" class="m-input-text" type="password" name="repassword" placeholder="输入6~18位字符">
-        <span class="tips tips-error" id="twoSpan"><i></i><em></em></span>
-      </div>
+        -->
+     
 
       <div class="agreement">
         <label></label>

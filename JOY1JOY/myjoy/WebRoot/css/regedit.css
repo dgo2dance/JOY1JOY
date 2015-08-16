@@ -100,6 +100,12 @@ Version:
     margin-right: 100px
 }
 
+.redstar {
+    color: #fe3600;
+}
+em, i {
+    font-style: normal;
+}
 
 .regedit_rig{ width:240px; float:left; margin:40px 0 0 120px;}
 .reg_login li,.reg_otherAccount li{ line-height:24px;}

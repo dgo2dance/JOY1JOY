@@ -147,7 +147,12 @@ public class Client extends PHPFunctions{
 		String $s = urlencode(uc_authcode($data+"&agent="+md5("")+"&time="+time(), "ENCODE", UC_KEY));
 		return $s;
 	}
-	
+//	public String uc_api_input(String $data) {
+//
+//	 String
+//	 $s = urlencode(uc_authcode($data+"&agent="+md5("")+"&time="+time(),"ENCODE",UC_KEY),"GBK");
+//	     return $s;
+//	}
 	/**
 	 * MYSQL 方式取指定的模块和动作的数据
 	 *
@@ -333,7 +338,8 @@ public class Client extends PHPFunctions{
 				
 				InputStream ins = $fp.getInputStream();				
 				
-				BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
+			//	BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(ins,"UTF-8"));
 				while (true) {
 					String $header = reader.readLine();
 					if($header == null || $header.equals("") || $header == "\r\n" || $header == "\n") {

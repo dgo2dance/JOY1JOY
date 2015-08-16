@@ -25,74 +25,11 @@
 .ie9{position:absolute;left:0;top:0;width:100%;height:100%;z-index:999;opacity:0;}
 </style>
 <script type="text/javascript" src="<%=path%>/js/user/userModify.js"></script>
-<script type="text/javascript">
-	function getBrowserInfo()
-	{
-		var agent = navigator.userAgent.toLowerCase() ;
-		
-		var regStr_ie = /msie [\d.]+;/gi ;
-		var regStr_ff = /firefox\/[\d.]+/gi
-		var regStr_chrome = /chrome\/[\d.]+/gi ;
-		var regStr_saf = /safari\/[\d.]+/gi ;
-		//IE
-		if(agent.indexOf("msie") > 0)
-		{
-			return agent.match(regStr_ie) ;
-		}
-		
-		//firefox
-		if(agent.indexOf("firefox") > 0)
-		{
-			return agent.match(regStr_ff) ;
-		}
-		
-		//Chrome
-		if(agent.indexOf("chrome") > 0)
-		{
-			return agent.match(regStr_chrome) ;
-		}
-		
-		//Safari
-		if(agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0)
-		{
-			return agent.match(regStr_saf) ;
-		}
-	
-	}
 
-	$(function() {
-
-		var gender = "${tUsers.gender}";
-		$(":radio[value=" + gender + "]").attr("checked", true);
-		var iconImg = "${tUsers.icon}";
-		if (iconImg != "") {
-			var path = joy.getContextPath();
-			$("#imghead").attr("src", path  + iconImg);
-		}
-		
-		var browser = getBrowserInfo() ;
-		//alert(browser);
-		var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
-		//alert(parseInt(verinfo));
-		if(parseInt(verinfo)<=8)
-		{
-			$("#imgOne").removeClass("ie9");
-			$("#imgOne").addClass("ie8");
-		}else
-		{
-			$("#imgOne").removeClass("ie8");
-			$("#imgOne").addClass("ie9");
-		}
-	});
-</script>
 </head>
 
 <body>
-
 	<jsp:include page="../base/joy1joy_header.jsp"></jsp:include>
-
-
-
 
 	<div class="main wrap">
 
@@ -145,9 +82,14 @@
 					<label for="email">邮箱：</label> <input id="email" type="text"
 						name="email" value="${tUsers.email}">
 				</div>
-
+               <!--  
 				<div class="row phone">
 					<label>手机：</label> <em>${sessionScope.users.mobile}</em>
+				</div>
+				-->
+				<div class="row phone">
+					<label>手机：</label> <input id="mobile" type="text" name="mobile"
+						value="${tUsers.mobile}">
 				</div>
 
 				<div class="row">
@@ -174,6 +116,70 @@
 	<div class="footer-placeholder"></div>
 
 	<jsp:include page="../base/joy1joy_footer.jsp"></jsp:include>
+	
+	<script type="text/javascript">
+	function getBrowserInfo()
+	{
+		var agent = navigator.userAgent.toLowerCase() ;
+		
+		var regStr_ie = /msie [\d.]+;/gi ;
+		var regStr_ff = /firefox\/[\d.]+/gi
+		var regStr_chrome = /chrome\/[\d.]+/gi ;
+		var regStr_saf = /safari\/[\d.]+/gi ;
+		//IE
+		if(agent.indexOf("msie") > 0)
+		{
+			return agent.match(regStr_ie) ;
+		}
+		
+		//firefox
+		if(agent.indexOf("firefox") > 0)
+		{
+			return agent.match(regStr_ff) ;
+		}
+		
+		//Chrome
+		if(agent.indexOf("chrome") > 0)
+		{
+			return agent.match(regStr_chrome) ;
+		}
+		
+		//Safari
+		if(agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0)
+		{
+			return agent.match(regStr_saf) ;
+		}
+	
+	}
+
+	$(function() {
+
+		var gender = "${tUsers.gender}";
+		
+		if(gender.length>0){
+		$(":radio[value=" + gender + "]").attr("checked", true);
+		}
+		var iconImg = "${tUsers.icon}";
+		if (iconImg != "") {
+			var path = joy.getContextPath();
+			$("#imghead").attr("src", path  + iconImg);
+		}
+		
+		var browser = getBrowserInfo() ;
+		//alert(browser);
+		var verinfo = (browser+"").replace(/[^0-9.]/ig,"");
+		//alert(parseInt(verinfo));
+		if(parseInt(verinfo)<=8)
+		{
+			$("#imgOne").removeClass("ie9");
+			$("#imgOne").addClass("ie8");
+		}else
+		{
+			$("#imgOne").removeClass("ie8");
+			$("#imgOne").addClass("ie9");
+		}
+	});
+</script>
 
 </body>
 </html>

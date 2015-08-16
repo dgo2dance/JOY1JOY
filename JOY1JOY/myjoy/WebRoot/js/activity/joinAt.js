@@ -15,6 +15,17 @@ $(function() {
 		prev_text : "上一页",
 		next_text : "下一页"
 	});
+	// alert($("#totalPages").val());
+	if($("#totalPages").val()==0){
+		$(".pagination").css("display","none");
+		$(".loading").css("display","block");
+		$(".loading").css("visibility","visible");
+	}else{
+		
+		$(".loading").css("display","none");
+		$(".loading").css("visibility","hidden");
+	}
+	
 
 	function pageselectCallback(page_index, jq) {
 		page.pno = page_index + 1;

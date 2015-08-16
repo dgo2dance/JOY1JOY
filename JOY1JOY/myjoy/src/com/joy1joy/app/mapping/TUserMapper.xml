@@ -44,9 +44,9 @@
 		where uid = #{uid,jdbcType=INTEGER}
 	</delete>
 	<insert id="insertTUsers" parameterType="com.joy1joy.app.bean.TUsers">
-		insert into t_users (userid,password,status,type,mobile,icon)
+		insert into t_users (userid,password,status,type,mobile,icon,email)
 		values (#{userid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{type,jdbcType=VARCHAR}
-		, #{mobile,jdbcType=VARCHAR},#{icon,jdbcType=VARCHAR})
+		, #{mobile,jdbcType=VARCHAR},#{icon,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR})
 	</insert>
 	
 	<update id="updateByPrimaryKeySelective" parameterType="com.joy1joy.app.bean.TUsers">
@@ -67,6 +67,7 @@
 		,email=#{email,jdbcType=VARCHAR}
 		, qq=#{qq,jdbcType=VARCHAR}
 		, icon=#{icon,jdbcType=VARCHAR}
+			, mobile=#{mobile,jdbcType=VARCHAR}
 		where uid = #{uid,jdbcType=INTEGER}
 	</update>
 </mapper>

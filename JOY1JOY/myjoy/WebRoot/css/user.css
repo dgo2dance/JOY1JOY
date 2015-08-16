@@ -758,5 +758,6 @@ Version:
     text-align: center;
     line-height: 40px;
     background-color: #eceff2;
-    visibility: hidden
+    visibility: hidden;
+    margin-top:10px;
 }

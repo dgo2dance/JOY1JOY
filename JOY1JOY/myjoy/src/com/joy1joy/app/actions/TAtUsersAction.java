@@ -95,6 +95,9 @@ public class TAtUsersAction extends BaseAction {
 					return C_SUCCESS;
 				}
 				// 报名
+				// 转码
+				String s=java.net.URLDecoder.decode(this.atUser.getRemark(),"UTF-8");
+				 this.atUser.setRemark(s);
 				int i = atUserService.insertTAtUser(atUser);
 				if (i > 0) {// 报名成功
 					code = 0;
@@ -220,7 +223,9 @@ public class TAtUsersAction extends BaseAction {
 	public String toFile(List<PartiUserInfo> list, String baseDir) {
 		String path = null;
 
-		String[] headers = { "用户Id", "报名时间", "报名人数", "手机号", "报名费用" };
+	//	String[] headers = { "用户Id", "报名时间", "报名人数", "手机号", "报名费用","备注" };
+		String[] headers = { "用户Id", "报名时间", "报名人数", "联系方式", "报名费用","备注","身份证号"};
+		
 		SXSSFWorkbook wb = new SXSSFWorkbook();
 		Sheet sh = wb.createSheet("报名列表");
 		// 标题
@@ -240,10 +245,18 @@ public class TAtUsersAction extends BaseAction {
 			String partiNum = u.getPartiNum() + "";
 			String mobile = u.getMobile();
 			String fee = u.getJoyFee() + "";
-			String[] data = { userid, partiTime, partiNum, mobile, fee };
+			String remark = u.getRemark();
+			String iphone = u.getIphone();
+			String idcard = u.getIdcard();
+		//	String[] data = { userid, partiTime, partiNum, mobile, fee, remark, iphone, idcard};
+			String[] data = { userid, partiTime, partiNum, iphone, fee, remark, idcard};
+			
 			for (int m = 0; m < data.length; m++) {
 				Cell cell = row.createCell(m);
-				String v = data[m];
+				String v="";
+				if(data[m]!=null){
+				v = data[m];
+				}
 				cell.setCellValue(v);
 			}
 		}

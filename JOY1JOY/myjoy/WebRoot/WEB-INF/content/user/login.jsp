@@ -14,6 +14,7 @@
 <meta charset="utf-8">
 <title>首页 - 动一动</title>
 <meta name="keywork" value="动一动,白领,户外活动,学习,周末无聊,周末干嘛,有趣">
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 <meta name="description" content="网站描述">
 <jsp:include page="../base/base_import_jquery1.11.2.jsp" />
 <link href="<%=path%>css/style.css" type="text/css" rel="stylesheet" />
@@ -41,7 +42,7 @@
     <div class="log_area">
     <h3>登录动一动</h3>
     <ul>
-          <li>   <label>用户名：</label><input id="loginName" class="m-input-text logininput" type="text" name="user" placeholder="手机或者昵称"></li>
+          <li>   <label>用户名：</label><input id="loginName" class="m-input-text logininput" type="text" name="user" placeholder="用户名"></li>
             <li> <label>密码：</label><input id="loginPass" class="m-input-text logininput" type="password" name="psw" placeholder="密码"></li>
         </ul>
 

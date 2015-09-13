@@ -240,7 +240,7 @@
 }
 
 .party .tips {
-    display: inline-block;
+    display: none;
     visibility: hidden;
     width: 150px;
     height: 16px;
@@ -257,6 +257,7 @@
 }
 
 .party .tips-error {
+	display:none;
     visibility: visible;
     background-position: 0 -22px;
     color: #ff6333
@@ -310,4 +311,13 @@
 
 .party form .status-error em {
     color: #ff6333
+}
+.uploadImg{
+	clear:both;overflow:auto;
+	}
+	input#poster{
+    width: 75px;
+}
+input#gqr {
+    width: 75px;
 }

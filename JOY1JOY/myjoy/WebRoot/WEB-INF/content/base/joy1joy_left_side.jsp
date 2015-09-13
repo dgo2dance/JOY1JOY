@@ -56,7 +56,7 @@
 	</ul>
 </div>
 <%
-	} else {
+	} else  if (user.getType() == 2) {
 %><div class="side" id="left_side">
 	<div class="user-info">
 		<div class="avatar">
@@ -88,7 +88,38 @@
 	</ul>
 </div>
 <%
-	}
+	} else {%>
+	
+	<div class="side" id="left_side">
+	<div class="user-info">
+		<div class="avatar">
+			<img src="<%=path.substring(0, path.length() - 1)%><%=icon%>"
+				alt="头像"> <span></span>
+		</div>
+
+		<div class="name">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div class="social">
+			<span class="followers"> <strong>0</strong> <br> 粉丝
+			</span> <span class="following"> <strong>0</strong> <br> 关注
+			</span>
+		</div>
+
+	</div>
+	<ul class="side-menu">
+		<li id="joinAt.action" class="join active"><a
+			href="<%=path%>at/joinAt.action"><i></i><span>已报名活动</span></a></li>
+	
+		<li id="myCollection.action" class="collect"><a
+			href="<%=path%>at/myCollection.action"><i></i><span>我的收藏</span></a></li>
+	</ul>
+</div>
+	
+	
+	<% }
 	}
 %>
 

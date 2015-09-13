@@ -390,7 +390,11 @@ line-height: 30px;}
 .c_list li{ line-height:45px; border-bottom:1px solid #d5d2d2; font-size:16px; padding-left:10px;}
 .c_list li h3{ font-size:22px; color:#fc3436;}
 .c_list li b{ color:#fc3436;}
-.c_list li .count{ border:1px solid #ccc; width:60px; height:25px; padding-left:3px;}
+.c_list li .count{ border:1px solid #ccc; width:160px; height:25px; padding-left:3px;}
+.c_list li>label {display: inline-block;
+    width: 80px;
+    vertical-align: middle;}
+.c_list li .countremark{ border:1px solid #ccc; width:160px; height:25px; padding-left:3px;}
 .font1{ float:left;}
 /*.enroll{ display:inline-block; margin:10px 20px; background:#ff3334; height:50px; color:#fff; line-height:50px; text-align:center; font-size:20px;}
 */
@@ -399,6 +403,7 @@ line-height: 30px;}
 .join{display:block; margin:10px 20px;width:260px;}
 .join:hover{ color:#f1f1f1;}
 .share{ margin:20px 20px 0 20px;}
+.con_inner li h3{ font-size:25px; color:#fc3436;}
 
 
 

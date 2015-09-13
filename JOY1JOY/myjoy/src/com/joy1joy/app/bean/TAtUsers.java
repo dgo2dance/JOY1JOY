@@ -18,6 +18,26 @@ public class TAtUsers {
 	private int pnum;
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 	private Date addtime = new Date();
+	private String remark;
+	private String iphone;
+	private String idcard;
+	
+	public String getIphone() {
+		return iphone;
+	}
+
+	public void setIphone(String iphone) {
+		this.iphone = iphone;
+	}
+
+	public String getIdcard() {
+		return idcard;
+	}
+
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
+
 
 	public int getId() {
 		return id;
@@ -59,4 +79,13 @@ public class TAtUsers {
 		this.addtime = addtime;
 	}
 
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	
 }

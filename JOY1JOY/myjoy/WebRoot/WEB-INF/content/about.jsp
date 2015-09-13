@@ -16,6 +16,7 @@
 <meta charset="utf-8">
 <title>首页 - 动一动</title>
 <meta name="keywork" value="动一动,白领,户外活动,学习,周末无聊,周末干嘛,有趣">
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 <meta name="description" content="网站描述">
 <jsp:include page="./base/base_import_jquery1.11.2.jsp" />
 <link href="<%=path%>css/common.css" rel="stylesheet">

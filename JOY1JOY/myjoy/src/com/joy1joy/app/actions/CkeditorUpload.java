@@ -63,6 +63,13 @@ public class CkeditorUpload extends BaseAction {
           
         //将文件保存到项目目录下  
         InputStream is = new FileInputStream(upload);  
+        // add by dusny 20150913
+//        String os1 = System.getProperty("os.name");  
+//        String uploadPath="/opt/images/ckeditor";
+//        if(os1.toLowerCase().startsWith("win")){  
+//        	uploadPath="D:/images/ckeditor";
+//        } 
+        // end by duansy 20150913
         String uploadPath = ServletActionContext.getServletContext().getRealPath("images/ckeditor");   //设置保存目录  
         File folder=new File(uploadPath);
 		if(!folder.exists()&& !folder .isDirectory())

@@ -16,6 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>动一动</title>
 <jsp:include page="../base/base_import_jquery1.11.2.jsp" />
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 <script type="text/javascript" src="<%=path%>js/jquery.cookie.js"></script>
 <script type="text/javascript" src="<%=path%>js/user/user.js"></script>
 <link href="<%=path%>css/regedit.css" type="text/css" rel="stylesheet" />

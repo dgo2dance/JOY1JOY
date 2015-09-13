@@ -15,6 +15,7 @@
 <link href="<%=path%>css/common.css" type="text/css" rel="stylesheet"
 	media="all" />
 
+
 <script type="text/javascript">
 <!--
 	var contextPath = document.getElementById("joy1_context_path").value;
@@ -29,3 +30,4 @@
 <script type="text/javascript" src="<%=path%>js/is.js"></script>
 <script type="text/javascript" src="<%=path%>js/base/config.js"></script>
 <script type="text/javascript" src="<%=path%>js/base/define.js"></script>
+

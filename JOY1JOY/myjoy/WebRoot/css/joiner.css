@@ -65,15 +65,15 @@ Version:
 }
 
 .tbody .col-2 {
-    width: 180px
+    width: 120px
 }
 
 .tbody .col-3 {
-    width: 230px
+    width: 130px
 }
 
 .tbody .col-4 {
-      width: 280px;
+      width: 150px;
     text-align: center
 }
 
@@ -81,6 +81,12 @@ Version:
       width: 160px;
     text-align: center
 }
+
+.tbody .col-7 {
+      width: 120px;
+    text-align: center
+}
+
 
 .tbody tr {
     border-top: 1px solid #eee;

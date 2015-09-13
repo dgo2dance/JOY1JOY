@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -384,11 +385,22 @@ public class TActivityAction extends BaseAction {
 
 		String absolutePath = ServletActionContext.getServletContext()
 				.getRealPath("");
-		String save_file_name = getCurDate("yyyyMMddHHmmssSSS") + "_"
-				+ this.uploadFileName;
-
+		// add by duansy 
+		Random ra =new Random();
+		int randomInt=ra.nextInt();
+		String save_file_name = getCurDate("yyyyMMddHHmmssSSS") + "_"+randomInt
+				+ this.uploadFileName.substring(this.uploadFileName.indexOf("."));
+		
+		  String os = System.getProperty("os.name");  
+	        String uploadPath="/opt/images/at/";
+	        if(os.toLowerCase().startsWith("win")){  
+	        	uploadPath="D:/images/at/";
+	        } 
 		String save_file_path = PATH_ACTIVITY_POSTER_BASE + save_file_name;
+	//   String save_file_path = uploadPath + save_file_name;
 		String path = absolutePath + save_file_path;
+	//	String path =  save_file_path;
+
 
 		logger.debug("保存文件绝对路径:" + path);
 

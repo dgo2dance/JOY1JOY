@@ -22,7 +22,7 @@ if (!"".equals(path)) {
 			</ul>
 
 			<ul class="m-footer_inner_list">
-				<li><h3>信息合作</h3></li>
+				<li><h3>商务合作</h3></li>
 				<li><a href="<%=path%>copperate.action">发布申请</a></li>
 				<li><a href="<%=path%>copperate.action">审核流程</a></li>
 			</ul>

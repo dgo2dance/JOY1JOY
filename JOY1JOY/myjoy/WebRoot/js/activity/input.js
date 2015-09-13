@@ -4,6 +4,7 @@
  */
 $(function() {
 	init();
+	handleSubDict("henan");
 	// 上传文件
 	$("#poster-upload").on("click", function(e) {
 		e.preventDefault();

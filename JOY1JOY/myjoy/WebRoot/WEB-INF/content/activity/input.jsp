@@ -18,6 +18,7 @@
 <meta charset="utf-8">
 <title>首页 - 动一动</title>
 <meta name="keywork" value="动一动，白领，户外活动，学习，周末无聊，周末干嘛,有趣">
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 <meta name="description" content="网站描述">
 <jsp:include page="../base/base_import_jquery1.11.2.jsp"></jsp:include>
 <link href="<%=path%>css/publishP.css" rel="stylesheet">
@@ -26,15 +27,14 @@
 
 <script type="text/javascript" src="<%=path%>js/jquery.Jcrop.min.js"></script>
 <link href="<%=path%>css/jquery.Jcrop.min.css">
-<script type="text/javascript" src="<%=path%>js/ajaxfileupload.js"></script>
-<script type="text/javascript"
-	src="<%=path%>My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript"
-	src="<%=path%>js/activity/input-config.js"></script>
-<script type="text/javascript"
-	src="<%=path%>js/activity/input-define.js"></script>
+
+<script type="text/javascript" src="<%=path%>My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="<%=path%>js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<%=path%>js/ajaxfileupload.js"></script>
 <script type="text/javascript" src="<%=path%>js/activity/input.js"></script>
+<script type="text/javascript" src="<%=path%>js/activity/input-config.js"></script>
+<script type="text/javascript" src="<%=path%>js/activity/input-define.js"></script>
+
 </head>
 
 <body>
@@ -122,21 +122,30 @@
 							class="tips tips-error"><i></i><em id="at_joyFee_tip"></em></span>
 					</div>
 
-
-					<div>
-						<label>上传海报：</label> <input type="file" id="poster" name="upload"
-							style="border: none;" /><input type="hidden" id="at_poster"
-							value="${activity.poster}" name="activity.poster"> <a
-							id="poster-upload" href="javascript:void(0);" style="color: red;">点击上传</a><span
-							class="tips tips-error"><i></i><em id="at_poster_tip"></em></span>
-					</div>
-					<div>
-						<label><span>&nbsp;&nbsp;</span></label> <img id="poster-view-img"
-							style="cursor: pointer;"
+               
+					
+					<div class="uploadImg">
+						<label style="float:left;">上传海报1：</label> 
+						
+					  <div class="viewImg" style="float:left;width:192px;height:121px;background:#eee;margin-right:15px;padding:10px;">
+								<label><span>&nbsp;&nbsp;</span></label> <img id="poster-view-img"
+							style="cursor: pointer;width:162px;height:112px;"
+							
 							src="<%=path.substring(0,path.length()-1)%>${activity.poster}"
-							alt="" width="40%" height="50px" /> <span
+							alt="" /> <span
 							class="tips tips-error"><i></i><em></em></span>
+					 </div>
+						<div class="upload">
+						<input type="file" id="poster" name="upload" style="border: none;" />
+						<input type="hidden" id="at_poster" value="${activity.poster}" name="activity.poster"> 
+						</p>
+						<a id="poster-upload" href="javascript:void(0);" style="color: red;">点击上传</a>
+						</p>
+						<label>图片大小比例建议为：640*450</label>
+							<span class="tips tips-error"><i></i><em id="at_poster_tip"></em></span>
+						</div>
 					</div>
+				
 					<div>
 						<label>活动介绍：</label>
 						<textarea class="ckeditor" name="description" id="at_description"
@@ -163,7 +172,7 @@
 						<span class="tips tips-error"><i></i><em
 							id="at_caution_tip"></em></span>
 					</div>
-
+                    <!--  
 					<div>
 						<label>是否短信确认报名：</label>
 						<s:if test="activity.autoSMS==1">
@@ -189,7 +198,7 @@
 						<span class="tips tips-error"><i></i><em
 							id="at_smsContent_tip"></em></span>
 					</div>
-
+                    -->
 					<div>
 						<label>是否上传微信群组图片：</label>
 						<s:if test="activity.gqr!=null && activity.gqr!=''">
@@ -202,25 +211,34 @@
 								value="1">是</input> &nbsp &nbsp <input type="radio"
 								name="uploadWeiXin" class="checkfee" checked="checked" value="0">否</input>
 						</s:else>
-
 						&nbsp &nbsp <span class="tips tips-error"><i></i><em></em></span>
 					</div>
 
-					<div>
-						<label>上传微信群组图片：</label> <input type="file" id="gqr" name="upload"
-							style="border: none;" /><input type="hidden" id="at_gqr"
-							name="activity.gqr" value="${activity.gqr}"> <a
-							id="poster-upload2" href="javascript:void(0);"
-							style="color: red;">点击上传</a><span class="tips tips-error"><i></i><em
-							id="gqr_tip"></em></span>
-					</div>
-					<div>
+					<div class="uploadImg">
+						<label style="float:left;">上传微信群组图片：</label> 
+						
+					<div class="viewImg" style="float:left;width:150px;height:130px;background:#eee;margin-right:15px;padding:20px;">
 						<label><span>&nbsp;&nbsp;</span></label> <img
-							id="poster-view-img2" style="cursor: pointer;"
+							id="poster-view-img2" style="cursor: pointer; width:120px;height:120px;"
 							src="<%=path.substring(0,path.length()-1)%>${activity.gqr}"
-							alt="" width="40%" height="50px" /> <span
+							alt="" /> <span
 							class="tips tips-error"><i></i><em></em></span>
 					</div>
+					<div class="upload">
+						<input type="file" id="gqr" name="upload"
+							style="border: none;" /><input type="hidden" id="at_gqr"
+							name="activity.gqr" value="${activity.gqr}"> 
+							</p>
+							<a
+							id="poster-upload2" href="javascript:void(0);"
+							style="color: red;">点击上传</a>
+							</p>
+							<label>图片大小比例建议为：430*430</label>
+							<span class="tips tips-error"><i></i><em
+							id="gqr_tip"></em></span>
+							</div>
+					</div>
+			
 
 					<div class="status">
 						<label></label> <em></em>

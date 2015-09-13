@@ -5,13 +5,23 @@ function opt_handler(t, id) {
 	switch (t) {
 	case 0:// 报名
 		var pnum = $("#at_joiin_pnum").val();
+		var premark = $("#at_joiin_remark").val();
+		var piphone = $("#at_joiin_iphone").val();
+		var pidcard = $("#at_joiin_idcard").val();
 		if (!/[0-9]+/.test(pnum) || pnum < 1) {
 			joy.alert('请正确输入报名人数!');
 			break;
 		}
+		if (!/[0-9]+/.test(piphone) || piphone ==null) {
+			joy.alert('请输入手机号码，以便联系!');
+			break;
+		}
 		var param = {
 			"atUser.pnum" : pnum,
-			"atUser.atid" : id
+			"atUser.atid" : id,
+			"atUser.remark" : encodeURI(premark),
+			"atUser.iphone" : piphone,
+			"atUser.idcard" : pidcard
 		};
 		at_join(param);
 		break;
@@ -74,4 +84,14 @@ $(function() {
 //	$("#at_join_group").on("blur", function() {
 //		$("#at_qr_area").fadeOut("slow");
 //	});
+	$(".d_con").find("img").each(function(i){
+	//	alert($(this).width());
+	//	alert($(this).height());
+	var height=595/$(this).width()*$(this).height();
+		if($(this).width()>595){
+			$(this).width(595);
+			$(this).height(height);
+		}
+	
+	});
 });

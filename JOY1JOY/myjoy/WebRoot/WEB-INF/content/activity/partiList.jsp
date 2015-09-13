@@ -19,6 +19,7 @@
 <meta charset="utf-8">
 <title>首页 - 动一动</title>
 <meta name="keywork" value="动一动,白领,户外活动,学习,周末无聊,周末干嘛,有趣">
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 <meta name="description" content="网站描述">
 <jsp:include page="../base/base_import_jquery1.11.2.jsp"></jsp:include>
 <link href="<%=path%>css/style.css" rel="stylesheet">
@@ -60,7 +61,9 @@
 					<col class="col-4" align="center">
 					<col class="col-5">
 					<col class="col-5">
+						<col class="col-5">
 					<col class="col-7">
+					<col class="col-8">
 				</colgroup>
 				<tbody>
 					<tr class="th">
@@ -71,7 +74,9 @@
 						<td align="center">报名时间</td>
 						<td align="center">报名人数</td>
 						<td align="center">联系方式</td>
+							<td align="center">身份证号</td>
 						<td>金额</td>
+						<td>备注</td>
 					</tr>
 					<s:iterator var="u" value="partiUsers">
 						<tr>
@@ -81,8 +86,11 @@
 							<td><span>${u.userid}</span></td>
 							<td align="center">${u.partiTimeStr}</td>
 							<td align="center">${u.partiNum}</td>
-							<td align="center">${u.mobile}</td>
+						<!--  	<td align="center">${u.mobile}</td> -->
+						<td align="center">${u.iphone}</td>
+						<td align="center">${u.idcard}</td>
 							<td class="price">￥${u.joyFee}</td>
+							<td class="center">${remark}</td>
 						</tr>
 					</s:iterator>
 				</tbody>

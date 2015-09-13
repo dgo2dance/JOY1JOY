@@ -18,6 +18,7 @@
 	%>
 	<%=s%>
 	<% } %>
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 	
 <input type="hidden" id="joy-context-path" value="<%=path%>" />
 <div class="m-header">

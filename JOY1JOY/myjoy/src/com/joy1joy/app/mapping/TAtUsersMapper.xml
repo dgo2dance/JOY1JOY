@@ -5,13 +5,13 @@
 <mapper namespace="com.joy1joy.app.dao.TAtUsersMapper">
 	<insert id="insertTAtUser" parameterType="TAtUsers">
 		insert into
-		t_at_users(id,at_id,uid,pnum,addtime)values(null,#{atid},#{uid},#{pnum},#{addtime})
+		t_at_users(id,at_id,uid,pnum,addtime,remark,iphone,idcard)values(null,#{atid},#{uid},#{pnum},#{addtime},#{remark},#{iphone},#{idcard})
 	</insert>
 	<delete id="deleteTAtUser">
 		delete from t_at_users where id=#{id}
 	</delete>
 	<select id="selectTAtUser" parameterType="TAtUsers" resultType="TAtUsers">
-		select id,at_id as atid,uid,pnum,addtime from t_at_users where 1=1 and
+		select id,at_id as atid,uid,pnum,addtime,remark,iphone,idcard from t_at_users where 1=1 and
 		at_id=#{atid} and uid=#{uid}
 	</select>
 	<select id="getAtJoinCount" parameterType="java.lang.Integer"
@@ -20,7 +20,7 @@
 	</select>
 	<select id="selectPartiUsersList" parameterType="java.lang.Integer"
 		resultType="partiUser">
-		select t1.id,t1.at_id as atid,t1.uid,t2.joy_fee*t1.pnum as
+		select t1.id,t1.at_id as atid,t1.uid,t1.remark,t1.iphone,t1.idcard,t2.joy_fee*t1.pnum as
 		joyFee,t3.userid,t3.mobile,t3.icon,t1.addtime as partiTime,t1.pnum as
 		partiNum,t2.name,t2.pnum as atNum from t_at_users t1,t_activities
 		t2,t_users t3 where 1=1 and
@@ -31,7 +31,7 @@
 	</select>
 	<select id="selectExportPartiUsers" parameterType="java.util.Map"
 		resultType="partiUser">
-		select t1.id,t1.at_id as atid,t1.uid,t2.joy_fee as
+		select t1.id,t1.at_id as atid,t1.uid,t1.remark,t1.iphone,t1.idcard,t2.joy_fee as
 		joyFee,t3.userid,t3.mobile,t3.icon,t1.addtime as partiTime,t1.pnum as
 		partiNum,t2.name,t2.pnum as atNum from t_at_users t1,t_activities
 		t2,t_users t3 where 1=1 and

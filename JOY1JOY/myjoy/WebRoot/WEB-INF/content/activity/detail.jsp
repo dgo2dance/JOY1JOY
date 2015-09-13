@@ -19,6 +19,7 @@
 <title>首页 - 动一动</title>
 <meta name="keywork" value="动一动,白领,户外活动,学习,周末无聊,周末干嘛,有趣">
 <meta name="description" content="网站描述">
+<link rel='icon' href="<%=path%>images/favcion.ico" type=‘image/x-ico’ />
 <jsp:include page="../base/base_import_jquery1.11.2.jsp"></jsp:include>
 <link href="<%=path%>css/style.css" rel="stylesheet">
 <script type="text/javascript" src="<%=path%>js/activity/detail.js"></script>
@@ -30,6 +31,10 @@
 
 	<div class="main wrap">
 		<div class="con_inner">
+		<!-- 	<li><h3>
+							<s:property value="activity.name" />
+						</h3></li>
+						 -->
 			<div class="con_left">
 				<div class="box01">
 					<img style="width:592px;" 
@@ -50,17 +55,26 @@
 			</div>
 			<div class="con_rig">
 				<ul class="c_list">
+				
 					<li><h3>
 							<s:property value="activity.name" />
 						</h3></li>
+						
+						
 					<li>时间：<s:date name="activity.stime" format="yyyy-MM-dd" />~<s:date
 							name="activity.stime" format="yyyy-MM-dd" /></li>
 					<li>地点：<s:property value="activity.addressName" /></li>
 					<li>活动人数：<s:property value="activity.pnum" /></li>
 					<li>费用：￥<s:property value="activity.joyFee" /></li>
 					<li>组织者：<s:property value="activity.cuserName" /></li>
-					<li>报名人数：<input id="at_joiin_pnum" type="text" class="count"
+					<li><label>报名人数：</label><input id="at_joiin_pnum" type="text" class="count"
 						value="1" /></li>
+							<li><label>手机号：</label><input id="at_joiin_iphone" type="text" class="countremark"
+						value="" placeholder="组织者通过手机号联系您" style="font-size:10px;"/></li>
+							<li><label>身份证号：</label><input id="at_joiin_idcard" type="text" class="countremark"
+						value="" placeholder="便于购买保险" style="font-size:10px;"/></li>
+					<li><label>备注：</label><input id="at_joiin_remark" type="text" class="countremark" 
+						placeholder="可填写上车地点等备注" style="font-size:10px;"/></li>
 				</ul>
 				<s:if test="activity.status==1">
 					<a href="javascript:opt_handler(0,${activity.id});"

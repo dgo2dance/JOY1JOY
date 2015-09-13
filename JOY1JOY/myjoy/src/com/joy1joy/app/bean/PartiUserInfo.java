@@ -25,6 +25,28 @@ public class PartiUserInfo {
 	private String name;
 	private int atNum;
 	private String partiTimeStr;
+	private String remark;
+	private String iphone;
+	private String idcard;
+	
+
+
+
+	public String getIphone() {
+		return iphone;
+	}
+
+	public void setIphone(String iphone) {
+		this.iphone = iphone;
+	}
+
+	public String getIdcard() {
+		return idcard;
+	}
+
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
 
 	public int getId() {
 		return id;
@@ -122,4 +144,13 @@ public class PartiUserInfo {
 		this.partiTimeStr = partiTimeStr;
 	}
 
+	
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	
 }

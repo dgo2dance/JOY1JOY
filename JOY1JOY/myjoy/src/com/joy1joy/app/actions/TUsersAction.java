@@ -24,6 +24,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
+import org.jfree.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import api.ucenter.Client;
@@ -197,30 +198,34 @@ public class TUsersAction extends BaseAction {
 				users.setType(TUsers.USER_COMMON);
 				users.setIcon("/images/userHeadImg/default.png");
 				boolean isResult = this.userService.addUsers(users);
+				Log.debug("BEGIN-SSO--------"+isResult);
 				if (isResult) {
 					// add by duansy 20150801
 					Client uc = new Client();
+					Log.debug("BEGIN-SSO--------");
 					String $returns = uc.uc_user_register(userId, password, email);
+					Log.debug("BEGIN-SSO--------"+$returns);
 					int $uid = Integer. parseInt ($returns); 
+					Log.debug("BEGIN-SSO--------"+$uid);
 					if ($uid <= 0) { 
 					if ($uid == -1) { 
-					System. out .print("用户名不合法"); 
+					System.out.print("用户名不合法"); 
 					} else if ($uid == -2) { 
-					System. out .print("包含要允许注册的词语"); 
+					System.out.print("包含要允许注册的词语"); 
 					} else if ($uid == -3) { 
-					System. out .print("用户名已经存在"); 
+					System.out.print("用户名已经存在"); 
 					} else if ($uid == -4) { 
-					System. out .print("Email 格式有误"); 
+					System.out.print("Email 格式有误"); 
 					} else if ($uid == -5) { 
-					System. out .print("Email 不允许注册"); 
+					System.out.print("Email 不允许注册"); 
 					} else if ($uid == -6) { 
-					System. out .print("该 Email 已经被注册"); 
+					System.out.print("该 Email 已经被注册"); 
 					} else { 
-					System. out .print("未定义"); 
+					System.out.print("未定义"); 
 					}
 					}
-					System. out .println("id:"+$uid);
-					System. out .println("添加成功！");
+					System.out.println("id:"+$uid);
+					System.out.println("添加成功！");
 					// end by duansy 20150801
 					
 					jsonObject.put("result", "success");
@@ -249,6 +254,7 @@ public class TUsersAction extends BaseAction {
 			out = getResponse().getWriter();
 			TUsers users = this.userService.findUserByNameOrPhone(userId,
 					userPhone);
+			Log.debug("BEGIN--SSO----LOGIN");
 			if (null != users) {
 				if (users.getPassword().equals(PasswordMD5.createEncryptPSW(password))) {
 
@@ -258,9 +264,9 @@ public class TUsersAction extends BaseAction {
 					Client uc = new Client();
 
 					String $result = uc.uc_user_login(userId, password);
-
+					Log.debug("BEGIN--SSO----$result"+$result);
 					String $ucsynlogin = "";
-
+					
 					LinkedList<String> rs = XMLHelper. uc_unserialize ($result);
 
 					if (rs.size()>0){
@@ -272,7 +278,7 @@ public class TUsersAction extends BaseAction {
 					String $password = rs.get(2);
 
 					String $email = rs.get(3);
-
+					Log.debug("BEGIN--SSO----$$uid"+$uid);
 					if ($uid > 0) {
 
 					$ucsynlogin = uc.uc_user_synlogin($uid);
@@ -401,6 +407,13 @@ public class TUsersAction extends BaseAction {
 			if (fileName != null && !fileName.equals("")) {
 				String imageFileName = new Date().getTime()
 						+ getExtention(fileName);
+				// add by duansy 20150913
+//				 String os = System.getProperty("os.name");  
+//			     String uploadPath="/opt/images/userHeadImg";
+//			     if(os.toLowerCase().startsWith("win")){  
+//			        	uploadPath="D:/images/userHeadImg";
+//			        } 
+			     // end by duansy 20150913
 				String uploadPath = ServletActionContext.getServletContext().getRealPath("images/userHeadImg");   //设置保存目录  
 		        File folder=new File(uploadPath);
 				if(!folder.exists()&& !folder .isDirectory())
